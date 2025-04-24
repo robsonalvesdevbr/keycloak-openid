@@ -1,0 +1,21 @@
+{
+	"name": "keycloak-openid",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node dist/app.js",
+		"build": "tsc"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@types/express": "^5.0.1",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"express": "^5.1.0"
+	}
+}
