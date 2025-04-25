@@ -9,6 +9,7 @@ const app = express();
 // Register 'handelbars' extension with The Mustache Express
 app.engine("hbs", engine({ extname: "hbs", defaultLayout: "layout.hbs" }));
 app.set("view engine", "hbs");
+app.set("views", "./src/views");
 
 const keycloakIssuer = await Issuer.discover(
 	"http://localhost:8080/realms/ecommerce",
