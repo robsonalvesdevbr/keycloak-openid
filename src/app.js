@@ -1,7 +1,7 @@
 import express from "express";
 import { engine } from "express-handlebars";
 import expressSession from "express-session";
-import { Issuer, Strategy } from "openid-client";
+import { Issuer, Strategy, generators } from "openid-client";
 import passport from "passport";
 
 const app = express();
@@ -22,13 +22,19 @@ console.log(
 	keycloakIssuer.metadata,
 );
 
+const code_verifier = generators.codeVerifier();
+const code_challenge = generators.codeChallenge(code_verifier);
+
 const client = new keycloakIssuer.Client({
-	client_id: "app-payment-client-secret",
-	client_secret: "V4ebDlZGTK7jsW9jOKnxWp2z2vpaqkI8",
+	client_id: "app-payment-client",
+	//client_secret: "AUgZ4MlNBO1TGCYUEywicBTMwclNzjpS",
+	token_endpoint_auth_method: "none",
 	redirect_uris: ["http://localhost:8000/auth/callback"],
 	post_logout_redirect_uris: ["http://localhost:8000/logout/callback"],
 	scope: ["openid", "app-payment-scope"],
 	response_types: ["code"],
+	codeChallenge: code_challenge,
+	code_challenge_method: "S256",
 });
 
 const memoryStore = new expressSession.MemoryStore();
