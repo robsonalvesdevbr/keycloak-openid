@@ -24,7 +24,7 @@ console.log(
 
 const client = new keycloakIssuer.Client({
 	client_id: "app-payment-client-secret",
-	client_secret: "V4ebDlZGTK7jsW9jOKnxWp2z2vpaqkI8",
+	client_secret: "AUgZ4MlNBO1TGCYUEywicBTMwclNzjpS",
 	redirect_uris: ["http://localhost:8000/auth/callback"],
 	post_logout_redirect_uris: ["http://localhost:8000/logout/callback"],
 	scope: ["openid", "app-payment-scope"],
